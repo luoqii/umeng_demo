@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengDownloadListener;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
@@ -88,6 +89,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 UmengUpdateAgent.silentUpdate(MainActivity.this);
+            }
+        });
+        findViewById(R.id.button_feedback).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FeedbackAgent agent = new FeedbackAgent(MainActivity.this);
+                agent.startFeedbackActivity();
             }
         });
     }

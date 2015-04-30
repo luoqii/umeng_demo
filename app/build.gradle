@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    jcenter()
+    maven { url "https://raw.githubusercontent.com/umeng/mvn-repo-umeng/master/repository" }
+}
+
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
@@ -44,6 +49,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
+//    compile 'com.umeng:fb:5.1.0'
+    compile 'com.android.support:support-v4:21.+'
 
 //    compile 'com.umeng.analytics:analytics:latest.integration'
 }
