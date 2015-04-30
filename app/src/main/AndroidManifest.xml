@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="demo.ument.bbs.org.umengdemo"
-    android:versionName="0.1.1"
-    android:versionCode="101">
+    android:versionName="0.1.2"
+    android:versionCode="102">
 
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
