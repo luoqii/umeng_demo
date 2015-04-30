@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UpdateConfig;
 
 
 public class BaseActivity extends ActionBarActivity {
@@ -17,6 +18,7 @@ public class BaseActivity extends ActionBarActivity {
 
         MobclickAgent.setDebugMode( true );
         UmengUpdateAgent.update(this);
+        UpdateConfig.setDebug(true);
     }
 
     public void onResume() {
