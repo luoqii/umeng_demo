@@ -5,9 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateConfig;
+import com.umeng.update.UpdateResponse;
+import com.umeng.update.UpdateStatus;
 
 
 public class MainActivity extends BaseActivity {
@@ -19,6 +23,25 @@ public class MainActivity extends BaseActivity {
 
         UpdateConfig.setDebug(true);
         UpdateConfig.setDeltaUpdate(false);
+        UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+            @Override
+            public void onUpdateReturned(int updateStatus,UpdateResponse updateInfo) {
+                switch (updateStatus) {
+                    case UpdateStatus.Yes: // has update
+                        UmengUpdateAgent.showUpdateDialog(MainActivity.this, updateInfo);
+                        break;
+                    case UpdateStatus.No: // has no update
+                        Toast.makeText(MainActivity.this, "没有更新", Toast.LENGTH_SHORT).show();
+                        break;
+                    case UpdateStatus.NoneWifi: // none wifi
+                        Toast.makeText(MainActivity.this, "没有wifi连接， 只在wifi下更新", Toast.LENGTH_SHORT).show();
+                        break;
+                    case UpdateStatus.Timeout: // time out
+                        Toast.makeText(MainActivity.this, "超时", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
         UmengUpdateAgent.update(this);
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
@@ -27,6 +50,18 @@ public class MainActivity extends BaseActivity {
                 Intent detail = new Intent(MainActivity.this, DetailActivity.class);
 
                 startActivity(detail);
+            }
+        });
+        findViewById(R.id.button_force_update).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UmengUpdateAgent.forceUpdate(MainActivity.this);
+            }
+        });
+        findViewById(R.id.button_silent_update).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UmengUpdateAgent.silentUpdate(MainActivity.this);
             }
         });
     }
