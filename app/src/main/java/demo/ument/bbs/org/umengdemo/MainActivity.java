@@ -1,14 +1,13 @@
 package demo.ument.bbs.org.umengdemo;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.umeng.analytics.MobclickAgent;
 import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UpdateConfig;
 
 
 public class MainActivity extends BaseActivity {
@@ -17,6 +16,10 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        UpdateConfig.setDebug(true);
+        UpdateConfig.setDeltaUpdate(false);
+        UmengUpdateAgent.update(this);
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override

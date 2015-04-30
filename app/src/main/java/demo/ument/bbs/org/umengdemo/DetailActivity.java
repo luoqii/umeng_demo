@@ -1,12 +1,8 @@
 package demo.ument.bbs.org.umengdemo;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 
 public class DetailActivity extends BaseActivity {
