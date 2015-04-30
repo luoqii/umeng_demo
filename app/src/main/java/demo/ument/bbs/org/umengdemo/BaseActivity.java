@@ -12,7 +12,7 @@ public class BaseActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MobclickAgent.setDebugMode(true);
+//        MobclickAgent.setDebugMode(true);
     }
 
     public void onResume() {
